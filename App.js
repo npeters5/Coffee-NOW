@@ -1,7 +1,10 @@
 import React from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { AppLoading, Asset, Font, Icon } from "expo";
-import AppNavigator from "./navigation/AppNavigator";
+import { createStackNavigator } from "react-navigation";
+import LoginScreen from "./screens/LoginScreen";
+import HomeScreen from "./screens/HomeScreen";
+import ListScreen from "./screens/ListScreen";
 
 export default class App extends React.Component {
   state = {
@@ -53,6 +56,12 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
+
+const AppNavigator = createStackNavigator({
+  LoginScreen: { screen: LoginScreen },
+  HomeScreen: { screen: HomeScreen },
+  ListScreen: { screen: ListScreen }
+});
 
 const styles = StyleSheet.create({
   container: {
