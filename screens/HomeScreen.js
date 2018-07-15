@@ -16,6 +16,7 @@ import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   async componentDidMount() {
+    this._getLocationAsync();
     const shops = await ajax.fetchCoffeeShops();
     console.log(shops);
     // this.setState({ deals });
@@ -30,10 +31,6 @@ export default class HomeScreen extends React.Component {
     errorMessage: null
   };
 
-  componentWillMount() {
-    this._getLocationAsync();
-  }
-
   _getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== "granted") {
@@ -45,6 +42,7 @@ export default class HomeScreen extends React.Component {
     let location = await Location.getCurrentPositionAsync({});
     this.setState({ location });
     console.log(Expo.Location.getProviderStatusAsync());
+    console.log(location);
   };
 
   render() {
