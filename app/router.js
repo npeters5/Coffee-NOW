@@ -11,6 +11,7 @@ import SignUp from "./screens/SignUp";
 import SignIn from "./screens/SignIn";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
+import Favorites from "./screens/Favorites";
 
 const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -41,6 +42,15 @@ export const SignedIn = createBottomTabNavigator(
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="home" size={30} color={tintColor} />
+        )
+      }
+    },
+    Favorites: {
+      screen: Favorites,
+      navigationOptions: {
+        tabBarLabel: "Favorites",
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="heart" size={30} color={tintColor} />
         )
       }
     },
