@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import { WebBrowser, MapView, Constants, Location, Permissions } from "expo";
 import ajax from "../ajax";
-
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
@@ -51,13 +50,13 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Find Coffee Near Me" onPress={this._showMoreApp} />
+        <Button title="Find Coffee Near Me" onPress={this._showListView} />
         <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
       </View>
     );
   }
 
-  _showMoreApp = () => {
+  _showListView = () => {
     this.props.navigation.navigate("ListScreen");
   };
 
