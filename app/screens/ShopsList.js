@@ -38,10 +38,7 @@ class ShopsList extends Component {
     const { navigation } = this.props;
     const lat = navigation.getParam("lat", "NO-ID");
     const long = navigation.getParam("long", "NO-ID");
-    console.log(lat);
-    console.log(long);
     const shops = await ajax.fetchCoffeeShops(lat, long);
-    console.log(shops);
     this.setState({ shops });
     console.log(this.state.shops);
   }

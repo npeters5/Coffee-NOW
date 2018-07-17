@@ -32,6 +32,7 @@ class Home extends Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
+  
     this.setState({ location });
     console.log(Expo.Location.getProviderStatusAsync());
     console.log(this.state.location);
