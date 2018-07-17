@@ -1,49 +1,65 @@
-import React from "react";
-import { ScrollView, Text, Linking, View } from "react-native";
+import React, { Component } from "react";
+import { ScrollView, Text, Linking, View, StyleSheet } from "react-native";
 import { Card, Button } from "react-native-elements";
+import { WebBrowser, MapView, Constants, Location, Permissions } from "expo";
+import ajax from "../ajax";
+import ShopsList from "./ShopsList";
 
-const images = [
-  {
-    key: 1,
-    name: "Nathan Anderson",
-    image: require("../images/1.jpg"),
-    url: "https://unsplash.com/photos/C9t94JC4_L8"
-  },
-  {
-    key: 2,
-    name: "Jamison McAndie",
-    image: require("../images/2.jpg"),
-    url: "https://unsplash.com/photos/waZEHLRP98s"
-  },
-  {
-    key: 3,
-    name: "Alberto Restifo",
-    image: require("../images/3.jpg"),
-    url: "https://unsplash.com/photos/cFplR9ZGnAk"
-  },
-  {
-    key: 4,
-    name: "John Towner",
-    image: require("../images/4.jpg"),
-    url: "https://unsplash.com/photos/89PFnHKg8HE"
+class Home extends Component {
+  async componentDidMount() {
+    this._getLocationAsync();
+    console.log(this.state.location);
+    // const shops = await ajax.fetchCoffeeShops(
+    //   this.state.location.coords.latitude,
+    //   this.state.location.coords.longitude
+    // );
+    // console.log(shops);
+    // this.setState({ shops });
   }
-];
 
-export default () => (
-  <View style={{ flex: 1 }}>
-    <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-      {images.map(({ name, image, url, key }) => (
-        <Card title={`CARD ${key}`} image={image} key={key}>
-          <Text style={{ marginBottom: 10 }}>
-            Photo by {name}.
-          </Text>
-          <Button
-            backgroundColor="#03A9F4"
-            title="VIEW NOW"
-            onPress={() => Linking.openURL(url)}
-          />
-        </Card>
-      ))}
-    </ScrollView>
-  </View>
-);
+  state = {
+    location: null,
+    errorMessage: null
+    // shops: []
+  };
+
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== "granted") {
+      this.setState({
+        errorMessage: "Permission to access location was denied"
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    this.setState({ location });
+    console.log(Expo.Location.getProviderStatusAsync());
+    console.log(this.state.location);
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button
+          onPress={() =>
+            this.props.navigation.navigate("ShopsList", {
+              lat: this.state.location.coords.latitude,
+              long: this.state.location.coords.longitude
+            })
+          }
+          title="Find Coffee Near Me"
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});
+
+export default Home;

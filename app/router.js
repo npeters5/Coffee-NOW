@@ -9,7 +9,7 @@ import { FontAwesome } from "react-native-vector-icons";
 
 import SignUp from "./screens/SignUp";
 import SignIn from "./screens/SignIn";
-import Home from "./screens/Home";
+import HomeNav from "./screens/HomeNav";
 import Profile from "./screens/Profile";
 import Favorites from "./screens/Favorites";
 
@@ -37,7 +37,7 @@ export const SignedOut = createStackNavigator({
 export const SignedIn = createBottomTabNavigator(
   {
     Home: {
-      screen: Home,
+      screen: HomeNav,
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
