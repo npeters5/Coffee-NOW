@@ -42,7 +42,8 @@ class ShopsList extends Component {
     console.log(long);
     const shops = await ajax.fetchCoffeeShops(lat, long);
     console.log(shops);
-    // this.setState({ shops });
+    this.setState({ shops });
+    console.log(this.state.shops);
   }
   render() {
     return (
