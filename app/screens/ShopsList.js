@@ -46,13 +46,13 @@ class ShopsList extends Component {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-          {images.map(({ name, image, url, key }) => (
-            <Card title={`CARD ${key}`} image={image} key={key}>
-              <Text style={{ marginBottom: 10 }}>Photo by {name}.</Text>
+          {this.state.shops.map(({ id, name, image_url }) => (
+            <Card title={`${name}`} image={image_url} key={id}>
+              <Text style={{ marginBottom: 10 }}>{name}.</Text>
               <Button
                 backgroundColor="#03A9F4"
-                title="VIEW NOW"
-                onPress={() => Linking.openURL(url)}
+                title="See Detail"
+                onPress={() => Linking.openURL(image_url)}
               />
             </Card>
           ))}
