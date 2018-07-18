@@ -11,6 +11,7 @@ import {
 import { Card, Button } from "react-native-elements";
 import Shop from "./Shop";
 import ajax from "../ajax";
+import ShopDetail from "./ShopDetail";
 
 class ShopsList extends Component {
   state = {
@@ -32,7 +33,20 @@ class ShopsList extends Component {
           <View style={styles.list}>
             <FlatList
               data={this.state.shops}
-              renderItem={({ item }) => <Shop shop={item} />}
+              renderItem={({ item }) => (
+                <Card>
+                  <Shop shop={item} />
+                  <Button
+                    onPress={() =>
+                      this.props.navigation.navigate("ShopDetail", {
+                        shop: item
+                      })
+                    }
+                    title="See Details"
+                  />
+                </Card>
+              )}
+              keyExtractor={item => item.id}
             />
           </View>
         </ScrollView>

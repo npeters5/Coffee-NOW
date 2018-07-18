@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
-
+import { Button } from "react-native-elements";
 
 class Shop extends Component {
   render() {
-      const { shop } = this.props;
-      console.log(shop.image_url);
+    const { shop } = this.props;
+    console.log(shop.image_url);
 
     return (
       <TouchableOpacity style={styles.shop}>
@@ -52,6 +52,5 @@ const styles = StyleSheet.create({
     textAlign: "right"
   }
 });
-
 
 export default Shop;
