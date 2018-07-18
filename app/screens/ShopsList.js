@@ -1,34 +1,16 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Linking, View } from "react-native";
+import {
+  ScrollView,
+  Text,
+  Linking,
+  View,
+  Image,
+  FlatList,
+  StyleSheet
+} from "react-native";
 import { Card, Button } from "react-native-elements";
+import Shop from "./Shop";
 import ajax from "../ajax";
-
-const images = [
-  {
-    key: 1,
-    name: "Nathan Anderson",
-    image: require("../images/1.jpg"),
-    url: "https://unsplash.com/photos/C9t94JC4_L8"
-  },
-  {
-    key: 2,
-    name: "Jamison McAndie",
-    image: require("../images/2.jpg"),
-    url: "https://unsplash.com/photos/waZEHLRP98s"
-  },
-  {
-    key: 3,
-    name: "Alberto Restifo",
-    image: require("../images/3.jpg"),
-    url: "https://unsplash.com/photos/cFplR9ZGnAk"
-  },
-  {
-    key: 4,
-    name: "John Towner",
-    image: require("../images/4.jpg"),
-    url: "https://unsplash.com/photos/89PFnHKg8HE"
-  }
-];
 
 class ShopsList extends Component {
   state = {
@@ -39,27 +21,31 @@ class ShopsList extends Component {
     const lat = navigation.getParam("lat", "NO-ID");
     const long = navigation.getParam("long", "NO-ID");
     const shops = await ajax.fetchCoffeeShops(lat, long);
+    console.log(shops);
     this.setState({ shops });
-    console.log(this.state.shops);
+    // console.log(this.state.shops);
   }
   render() {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
-          {this.state.shops.map(({ id, name, image_url }) => (
-            <Card title={`${name}`} image={image_url} key={id}>
-              <Text style={{ marginBottom: 10 }}>{name}.</Text>
-              <Button
-                backgroundColor="#03A9F4"
-                title="See Detail"
-                onPress={() => Linking.openURL(image_url)}
-              />
-            </Card>
-          ))}
+          <View style={styles.list}>
+            <FlatList
+              data={this.state.shops}
+              renderItem={({ item }) => <Shop shop={item} />}
+            />
+          </View>
         </ScrollView>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: "#eee",
+    width: "100%"
+  }
+});
 
 export default ShopsList;
