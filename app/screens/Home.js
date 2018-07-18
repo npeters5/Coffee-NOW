@@ -20,7 +20,6 @@ class Home extends Component {
   state = {
     location: null,
     errorMessage: null
-    // shops: []
   };
 
   _getLocationAsync = async () => {
@@ -30,9 +29,7 @@ class Home extends Component {
         errorMessage: "Permission to access location was denied"
       });
     }
-
     let location = await Location.getCurrentPositionAsync({});
-  
     this.setState({ location });
     console.log(Expo.Location.getProviderStatusAsync());
     console.log(this.state.location);
