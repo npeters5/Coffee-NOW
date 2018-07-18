@@ -29,6 +29,10 @@ class ShopsList extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <Button
+          onPress={() => this.props.navigation.navigate("CoffeeMap")}
+          title="Map View"
+        />
         <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
           <View style={styles.list}>
             <FlatList

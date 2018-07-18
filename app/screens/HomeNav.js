@@ -3,6 +3,7 @@ import { createStackNavigator } from "react-navigation";
 import ShopsList from "./ShopsList";
 import Home from "./Home";
 import ShopDetail from "./ShopDetail";
+import CoffeeMap from "./CoffeeMap";
 
 const homeNav = createStackNavigator({
   Home: {
@@ -15,6 +16,12 @@ const homeNav = createStackNavigator({
     screen: ShopsList,
     navigationOptions: props => ({
       title: "Shops"
+    })
+  },
+  CoffeeMap: {
+    screen: CoffeeMap,
+    navigationOptions: props => ({
+      title: "Coffee Map"
     })
   },
   ShopDetail: {

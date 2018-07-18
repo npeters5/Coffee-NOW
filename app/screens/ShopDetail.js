@@ -12,6 +12,8 @@ class ShopDetail extends Component {
         <Text>{shop.id}</Text>
         <Text>{shop.image_url}</Text>
         <Text>Average Rating: {shop.rating}</Text>
+        <Text>Latitude: {shop.latitude}</Text>
+        <Text>Longitude: {shop.longitude}</Text>
       </View>
     );
   }
