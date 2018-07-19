@@ -47,7 +47,7 @@ class ShopsList extends Component {
                   <Button
                     onPress={() =>
                       this.props.navigation.navigate("ShopDetail", {
-                        shop: item
+                        initialShopData: item
                       })
                     }
                     title="See Details"
