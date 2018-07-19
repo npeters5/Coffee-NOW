@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import { Card, Button, FormLabel, FormInput } from "react-native-elements";
 import { onSignIn } from "../auth";
+import ajax from "../ajax";
 
 class SignIn extends Component {
   state = {
@@ -42,7 +43,10 @@ class SignIn extends Component {
             backgroundColor="#03A9F4"
             title="SIGN IN"
             onPress={() => {
-              onSignIn().then(() => navigation.navigate("SignedIn"));
+              ajax
+                .userSignIn(this.state.email, this.state.password)
+                .then(onSignIn)
+                .then(() => navigation.navigate("SignedIn"));
             }}
           />
         </Card>
