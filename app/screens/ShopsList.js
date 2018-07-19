@@ -15,24 +15,34 @@ import ShopDetail from "./ShopDetail";
 
 class ShopsList extends Component {
   state = {
-    shops: []
+    shops: [],
+    latitude: this.props.navigation.getParam("lat", "NO-ID"),
+    longitude: this.props.navigation.getParam("long", "NO-ID")
   };
   async componentDidMount() {
-    const { navigation } = this.props;
-    const lat = navigation.getParam("lat", "NO-ID");
-    const long = navigation.getParam("long", "NO-ID");
-    const shops = await ajax.fetchCoffeeShops(lat, long);
+    // const { navigation } = this.props;
+    // const lat = navigation.getParam("lat", "NO-ID");
+    // const long = navigation.getParam("long", "NO-ID");
+    const shops = await ajax.fetchCoffeeShops(
+      this.state.latitude,
+      this.state.longitude
+    );
     console.log(shops);
     this.setState({ shops });
     // console.log(this.state.shops);
   }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Button
           onPress={() =>
             this.props.navigation.navigate("CoffeeMap", {
-              shops: this.state.shops
+              shops: this.state.shops,
+              latlong: {
+                latitude: this.state.latitude,
+                longitude: this.state.longitude
+              }
             })
           }
           title="Map View"
