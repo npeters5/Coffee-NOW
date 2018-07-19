@@ -1,4 +1,4 @@
-const apiHost = `http://192.168.0.120:3000/`;
+const apiHost = `http://172.24.23.97:3000/`;
 import { Alert } from "react-native";
 
 export default {
@@ -48,6 +48,15 @@ export default {
     } catch (error) {
       console.log(error);
       Alert.alert("Error!!!");
+    }
+  },
+  async fetchShopDetail(shopId) {
+    try {
+      const response = await fetch(apiHost + `shops/${shopId}/show`);
+      const responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      console.error(error);
     }
   }
 };
