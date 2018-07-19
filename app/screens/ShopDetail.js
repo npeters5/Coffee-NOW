@@ -76,12 +76,41 @@ class ShopDetail extends Component {
   };
 
   render() {
-    const { shop } = this.state;
-    return (
-      <View>
-        <Text>{shop.name}</Text>
-      </View>
-    );
+    const shop = this.state.shop;
+    console.log(shop.photos);
+    if (shop.photos) {
+      return (
+        <View>
+          <Animated.Image
+            {...this.imagePanResponder.panHandlers}
+            source={{ uri: shop.photos[this.state.imageIndex] }}
+            style={[{ left: this.imageXPos }, styles.image]}
+          />
+          <View>
+            <View>
+              <Text style={styles.title}>{shop.name}</Text>
+            </View>
+            <View style={styles.footer}>
+              <View style={styles.info}>
+                <Text style={styles.price}>Average Rating: {shop.rating}</Text>
+                <Text style={styles.cause}>
+                  # of Reviews: {shop.review_count}
+                </Text>
+              </View>
+              <View style={styles.user}>
+                <Text>{shop.location.display_address}</Text>
+              </View>
+            </View>
+            <View style={styles.description}>
+              <Text>Phone: {shop.display_phone}</Text>
+            </View>
+            <Button title="Go to Yelp page" onPress={this.openShopUrl} />
+          </View>
+        </View>
+      );
+    } else {
+      return <View />;
+    }
   }
 }
 
@@ -89,7 +118,7 @@ const styles = StyleSheet.create({
   shop: {},
   image: {
     width: "100%",
-    height: 150,
+    height: 200,
     backgroundColor: "#ccc"
   },
 
