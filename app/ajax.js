@@ -1,4 +1,4 @@
-const apiHost = `http://172.24.23.97:3000/`;
+const apiHost = `http://192.168.0.117:3000/`;
 import { Alert } from "react-native";
 
 export default {
