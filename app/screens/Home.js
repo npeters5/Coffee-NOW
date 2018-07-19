@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { ScrollView, Text, Linking, View, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  Text,
+  Linking,
+  View,
+  StyleSheet,
+  Alert
+} from "react-native";
 import { Card, Button } from "react-native-elements";
 import { WebBrowser, MapView, Constants, Location, Permissions } from "expo";
 import ajax from "../ajax";
