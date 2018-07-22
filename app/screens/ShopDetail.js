@@ -9,10 +9,13 @@ import {
   Text,
   View,
   Image,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage
 } from "react-native";
 import { Button } from "react-native-elements";
 import ajax from "../ajax";
+import auth from "../auth";
+import { USER_API_TOKEN } from "../auth";
 
 class ShopDetail extends Component {
   imageXPos = new Animated.Value(0);
@@ -75,6 +78,10 @@ class ShopDetail extends Component {
     Linking.openURL(this.state.shop.url);
   };
 
+  addToFavorites = () => {
+    ajax.addFavorite(this.state.shop.id);
+  };
+
   render() {
     const shop = this.state.shop;
     console.log(shop.photos);
@@ -104,7 +111,12 @@ class ShopDetail extends Component {
             <View style={styles.description}>
               <Text>Phone: {shop.display_phone}</Text>
             </View>
-            <Button title="Go to Yelp page" onPress={this.openShopUrl} />
+            <View>
+              <Button title="Add to Favorites" onPress={this.addToFavorites} />
+            </View>
+            <View>
+              <Button title="Go to Yelp page" onPress={this.openShopUrl} />
+            </View>
           </View>
         </View>
       );

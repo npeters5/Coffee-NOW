@@ -5,7 +5,6 @@ import { Button } from "react-native-elements";
 class Shop extends Component {
   render() {
     const { shop } = this.props;
-    console.log(shop.image_url);
 
     return (
       <TouchableOpacity style={styles.shop}>
