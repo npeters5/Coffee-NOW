@@ -20,16 +20,12 @@ class ShopsList extends Component {
     longitude: this.props.navigation.getParam("long", "NO-ID")
   };
   async componentDidMount() {
-    // const { navigation } = this.props;
-    // const lat = navigation.getParam("lat", "NO-ID");
-    // const long = navigation.getParam("long", "NO-ID");
     const shops = await ajax.fetchCoffeeShops(
       this.state.latitude,
       this.state.longitude
     );
     console.log(shops);
     this.setState({ shops });
-    // console.log(this.state.shops);
   }
 
   render() {
