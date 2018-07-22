@@ -15,17 +15,6 @@ export const onSignIn = async response => {
     console.log(error);
   }
 };
-//   AsyncStorage.setItem(USER_API_TOKEN, response.api_token);
-//
-// async function setItem(key, value) {
-//   try {
-//     const value = await AsyncStorage.setItem(key, value);
-//     console.log(value);
-//     return value;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 export const onSignOut = () => AsyncStorage.removeItem(USER_API_TOKEN);
 
