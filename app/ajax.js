@@ -1,4 +1,4 @@
-const apiHost = `http://10.1.10.49:3000/`;
+const apiHost = `http://192.168.0.115:3000/`;
 import { Alert, AsyncStorage } from "react-native";
 import { USER_API_TOKEN } from "./auth";
 
@@ -9,10 +9,15 @@ async function getToken() {
 export default {
   async fetchCoffeeShops(lat, long) {
     try {
+      const token = await getToken();
       const response = await fetch(
         apiHost + `shops?latitude=${lat}&longitude=${long}`,
         {
-          method: "get"
+          method: "get",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "X-Api-Token": token
+          }
         }
       );
       const responseJson = await response.json();
@@ -67,7 +72,8 @@ export default {
   async addFavorite(shopId) {
     try {
       const token = await getToken();
-      const response = await fetch(`${apiHost}favorites`, {
+
+      return fetch(`${apiHost}favorites`, {
         body: JSON.stringify({
           favorite: {
             shop_id: shopId
@@ -79,9 +85,8 @@ export default {
           "X-Api-Token": token
         }
       });
-      const responseJson = await response.json();
-      return responseJson;
     } catch (error) {
+      // ??
       console.error(error);
     }
   }
