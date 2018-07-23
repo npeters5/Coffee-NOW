@@ -34,6 +34,26 @@ export const SignedOut = createStackNavigator({
   }
 });
 
+const FavsList = createStackNavigator({
+  FavoritesList: {
+    screen: FavoritesList,
+    navigationOptions: {
+      title: "Favorites",
+      headerStyle
+    }
+  }
+});
+
+const Prof = createStackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      title: "Profile",
+      headerStyle
+    }
+  }
+});
+
 export const SignedIn = createBottomTabNavigator(
   {
     Home: {
@@ -46,15 +66,15 @@ export const SignedIn = createBottomTabNavigator(
       }
     },
     FavoritesList: {
-      screen: FavoritesList,
-      // navigationOptions: ({ navigation }) => ({
-      //   tabBarLabel: "Favorites",
-      //   tabBarIcon: ({ tintColor }) => (
-      //     <FontAwesome name="heart" size={30} color={tintColor} />
-      //   ),
-      //   tabBarOnPress: () =>
-      //     navigation.navigate("FavoritesList", { date: new Date() })
-      // })
+      screen: FavsList,
+      navigationOptions: ({ navigation, screenProps }) => ({
+        tabBarLabel: "Favorites",
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="heart" size={30} color={tintColor} />
+        ),
+        tabBarOnPress: () =>
+          navigation.navigate("FavoritesList", { refreshData: true })
+      })
 
       // navigationOptions: ({ navigation }) => ({
       //   tabBarLabel: ({ tintColor }) => (
@@ -69,15 +89,15 @@ export const SignedIn = createBottomTabNavigator(
       //     </TouchableOpacity>
       //   )
       // })
-      navigationOptions: {
-        tabBarLabel: "Favorites",
-        tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="heart" size={30} color={tintColor} />
-        )
-      }
+      // navigationOptions: {
+      //   tabBarLabel: "Favorites",
+      //   tabBarIcon: ({ tintColor }) => (
+      //     <FontAwesome name="heart" size={30} color={tintColor} />
+      //   )
+      // }
     },
     Profile: {
-      screen: Profile,
+      screen: Prof,
       navigationOptions: {
         tabBarLabel: "Profile",
         tabBarIcon: ({ tintColor }) => (
