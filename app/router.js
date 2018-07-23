@@ -11,7 +11,7 @@ import SignUp from "./screens/SignUp";
 import SignIn from "./screens/SignIn";
 import HomeNav from "./screens/HomeNav";
 import Profile from "./screens/Profile";
-import Favorites from "./screens/Favorites";
+import FavoritesList from "./screens/FavoritesList";
 
 const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -45,8 +45,30 @@ export const SignedIn = createBottomTabNavigator(
         )
       }
     },
-    Favorites: {
-      screen: Favorites,
+    FavoritesList: {
+      screen: FavoritesList,
+      // navigationOptions: ({ navigation }) => ({
+      //   tabBarLabel: "Favorites",
+      //   tabBarIcon: ({ tintColor }) => (
+      //     <FontAwesome name="heart" size={30} color={tintColor} />
+      //   ),
+      //   tabBarOnPress: () =>
+      //     navigation.navigate("FavoritesList", { date: new Date() })
+      // })
+
+      // navigationOptions: ({ navigation }) => ({
+      //   tabBarLabel: ({ tintColor }) => (
+      //     <TouchableOpacity
+      //       // Pass a random number or a new Date() as a param when navigate to the screen
+      //       onPress={() =>
+      //         navigation.navigate("FavoritesList", { date: new Date() })
+      //       }
+      //       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      //     >
+      //       <Text>Favorites</Text>
+      //     </TouchableOpacity>
+      //   )
+      // })
       navigationOptions: {
         tabBarLabel: "Favorites",
         tabBarIcon: ({ tintColor }) => (
