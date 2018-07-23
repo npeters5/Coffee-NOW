@@ -1,4 +1,5 @@
-const apiHost = `http://192.168.0.115:3000/`;
+const apiHost = `http://172.24.23.97:3000/`;
+// const apiHost = `https://coffee-now-api.herokuapp.com/`;
 import { Alert, AsyncStorage } from "react-native";
 import { USER_API_TOKEN } from "./auth";
 
