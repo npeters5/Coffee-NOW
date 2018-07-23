@@ -18,6 +18,23 @@ import auth from "../auth";
 import { USER_API_TOKEN } from "../auth";
 
 class ShopDetail extends Component {
+  state = {
+    shop: this.props.navigation.getParam("initialShopData", "NO-ID"),
+    imageIndex: 0,
+    favorited: this.props.navigation.getParam("initialShopData", "NO-ID")
+      .favorited
+  };
+
+  async componentDidMount() {
+    const fullShop = await ajax.fetchShopDetail(this.state.shop.id);
+    console.log(fullShop);
+    this.setState({
+      shop: fullShop,
+      favorited: fullShop.favorited
+    });
+    console.log(this.state.shop);
+  }
+
   imageXPos = new Animated.Value(0);
   imagePanResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -61,30 +78,30 @@ class ShopDetail extends Component {
     );
   };
 
-  state = {
-    shop: this.props.navigation.getParam("initialShopData", "NO-ID"),
-    imageIndex: 0
-  };
-
-  async componentDidMount() {
-    const fullShop = await ajax.fetchShopDetail(this.state.shop.id);
-    this.setState({
-      shop: fullShop
-    });
-    console.log(this.state.shop);
-  }
-
   openShopUrl = () => {
     Linking.openURL(this.state.shop.url);
   };
 
   addToFavorites = () => {
-    ajax.addFavorite(this.state.shop.id);
+    ajax.addFavorite(this.state.shop.id).then(() => {
+      console.log("are we here?");
+      this.setState({ favorited: true });
+      console.log(this.state.favorited);
+    });
+  };
+
+  removeFromFavorites = () => {
+    ajax.removeFavorite(this.state.shop.id).then(() => {
+      console.log("inside removeFromFavorites");
+      this.setState({ favorited: false });
+      console.log(this.state.favorited);
+    });
   };
 
   render() {
     const shop = this.state.shop;
-    console.log(shop.photos);
+    console.log(shop);
+    console.log(this.state.favorited);
     if (shop.photos) {
       return (
         <View>
@@ -105,14 +122,25 @@ class ShopDetail extends Component {
                 </Text>
               </View>
               <View style={styles.user}>
-                <Text>{shop.location.display_address}</Text>
+                <Text>{shop.address}</Text>
               </View>
             </View>
             <View style={styles.description}>
               <Text>Phone: {shop.display_phone}</Text>
             </View>
             <View>
-              <Button title="Add to Favorites" onPress={this.addToFavorites} />
+              <Button
+                title={
+                  this.state.favorited
+                    ? "Remove from Favorites"
+                    : "Add to Favorites"
+                }
+                onPress={
+                  this.state.favorited
+                    ? this.removeFromFavorites
+                    : this.addToFavorites
+                }
+              />
             </View>
             <View>
               <Button title="Go to Yelp page" onPress={this.openShopUrl} />
