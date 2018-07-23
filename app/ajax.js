@@ -81,6 +81,25 @@ export default {
       Alert.alert(`${error.errors}`);
     }
   },
+  async getFavorites() {
+    try {
+      const token = await getToken();
+      console.log(token);
+      const response = await fetch(`${apiHost}favorites`, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "X-Api-Token": token
+        }
+      });
+      const responseJson = await response.json();
+      console.log(responseJson);
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+      Alert.alert(`${error.errors}`);
+    }
+  },
   async addFavorite(shopId) {
     try {
       const token = await getToken();
