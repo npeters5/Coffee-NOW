@@ -10,17 +10,19 @@ export default {
   async fetchCoffeeShops(lat, long) {
     try {
       const token = await getToken();
+      console.log(token);
       const response = await fetch(
         apiHost + `shops?latitude=${lat}&longitude=${long}`,
         {
           method: "get",
           headers: {
             "Content-Type": "application/json; charset=utf-8",
-            "X-Api-Token": token
+            "X-Api-Token": `${token}`
           }
         }
       );
       const responseJson = await response.json();
+      console.log(responseJson);
       return responseJson;
     } catch (error) {
       console.error(error);
@@ -62,18 +64,28 @@ export default {
   },
   async fetchShopDetail(shopId) {
     try {
-      const response = await fetch(apiHost + `shops/${shopId}/show`);
+      const token = await getToken();
+      console.log(token);
+      const response = await fetch(apiHost + `shops/${shopId}/show`, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "X-Api-Token": `${token}`
+        }
+      });
       const responseJson = await response.json();
+      console.log(responseJson);
       return responseJson;
     } catch (error) {
       console.error(error);
+      Alert.alert(`${error.errors}`);
     }
   },
   async addFavorite(shopId) {
     try {
       const token = await getToken();
-
-      return fetch(`${apiHost}favorites`, {
+      console.log(token);
+      const response = fetch(`${apiHost}favorites`, {
         body: JSON.stringify({
           favorite: {
             shop_id: shopId
@@ -85,6 +97,29 @@ export default {
           "X-Api-Token": token
         }
       });
+      console.log(response);
+    } catch (error) {
+      // ??
+      console.error(error);
+    }
+  },
+  async removeFavorite(shopId) {
+    try {
+      const token = await getToken();
+      console.log(token);
+      const response = fetch(`${apiHost}favorite`, {
+        body: JSON.stringify({
+          favorite: {
+            shop_id: shopId
+          }
+        }),
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "X-Api-Token": token
+        }
+      });
+      console.log(response);
     } catch (error) {
       // ??
       console.error(error);
