@@ -1,5 +1,5 @@
-const apiHost = `http://172.24.23.97:3000/`;
-// const apiHost = `https://coffee-now-api.herokuapp.com/`;
+// const apiHost = `http://172.24.23.97:3000/`;
+const apiHost = `https://coffee-now-api.herokuapp.com/`;
 import { Alert, AsyncStorage } from "react-native";
 import { USER_API_TOKEN } from "./auth";
 
@@ -94,7 +94,6 @@ export default {
         }
       });
       const responseJson = await response.json();
-      console.log(responseJson);
       return responseJson;
     } catch (error) {
       console.error(error);
@@ -118,6 +117,7 @@ export default {
         }
       });
       console.log(response);
+      Alert.alert("Successfully added new favorite!");
     } catch (error) {
       // ??
       console.error(error);
@@ -140,6 +140,7 @@ export default {
         }
       });
       console.log(response);
+      Alert.alert("Successfully removed favorite.");
     } catch (error) {
       // ??
       console.error(error);
