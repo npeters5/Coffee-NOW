@@ -12,25 +12,32 @@ import { Card, Button } from "react-native-elements";
 import Shop from "./Shop";
 import ajax from "../ajax";
 import ShopDetail from "./ShopDetail";
+import Loader from "./Loader";
 
 class ShopsList extends Component {
   state = {
     shops: [],
     latitude: this.props.navigation.getParam("lat", "NO-ID"),
-    longitude: this.props.navigation.getParam("long", "NO-ID")
+    longitude: this.props.navigation.getParam("long", "NO-ID"),
+    loading: true
   };
+
   async componentDidMount() {
     const shops = await ajax.fetchCoffeeShops(
       this.state.latitude,
       this.state.longitude
     );
     console.log(shops);
-    this.setState({ shops });
+      this.setState({
+        shops: shops,
+        loading: false,
+      });
   }
 
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#rgb(58, 48, 66)" }}>
+        <Loader loading={this.state.loading} />
         <Button
           style={{ paddingTop: 15 }}
           onPress={() =>
