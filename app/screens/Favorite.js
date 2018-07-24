@@ -74,7 +74,19 @@ class Favorite extends Component {
       <Swipeout {...swipeSettings}>
         <View style={{ flex: 1, flexDirection: "column" }}>
           <View style={{ flex: 1, flexDirection: "row" }}>
-            <View style={{ flex: 1, flexDirection: "column", height: 75 }}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "column",
+                height: 75,
+                backgroundColor:
+                  this.props.id % 2 == 0
+                    ? "rgb(255, 120, 79)"
+                    : "rgb(58, 48, 66)",
+                borderColor: "white",
+                borderTopWidth: 1
+              }}
+            >
               <Text style={styles.flatListItem}>
                 {this.state.favorite.name}
               </Text>

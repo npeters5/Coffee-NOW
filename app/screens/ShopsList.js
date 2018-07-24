@@ -30,8 +30,9 @@ class ShopsList extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "#rgb(58, 48, 66)" }}>
         <Button
+          style={{ paddingTop: 15 }}
           onPress={() =>
             this.props.navigation.navigate("CoffeeMap", {
               shops: this.state.shops,
@@ -43,7 +44,11 @@ class ShopsList extends Component {
           }
           title="Map View"
         />
-        <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
+        <ScrollView
+          contentContainerStyle={{
+            paddingVertical: 10
+          }}
+        >
           <View style={styles.list}>
             <FlatList
               data={this.state.shops}
@@ -71,7 +76,7 @@ class ShopsList extends Component {
 
 const styles = StyleSheet.create({
   list: {
-    backgroundColor: "#eee",
+    backgroundColor: "#rgb(58, 48, 66)",
     width: "100%"
   }
 });

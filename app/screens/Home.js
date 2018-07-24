@@ -5,7 +5,8 @@ import {
   Linking,
   View,
   StyleSheet,
-  Alert
+  Alert,
+  ImageBackground
 } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { WebBrowser, MapView, Constants, Location, Permissions } from "expo";
@@ -44,17 +45,24 @@ class Home extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Button
-          onPress={() =>
-            this.props.navigation.navigate("ShopsList", {
-              lat: this.state.location.coords.latitude,
-              long: this.state.location.coords.longitude
-            })
-          }
-          title="Find Coffee Near Me"
-        />
-      </View>
+      <ImageBackground
+        source={require("../images/coffeebeans.jpg")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <View style={styles.container}>
+          <Button
+            backgroundColor="rgb(219 ,157 ,71)"
+            onPress={() =>
+              this.props.navigation.navigate("ShopsList", {
+                lat: this.state.location.coords.latitude,
+                long: this.state.location.coords.longitude
+              })
+            }
+            title="Find Coffee Near Me"
+            textStyle={{ fontSize: 20 }}
+          />
+        </View>
+      </ImageBackground>
     );
   }
 }
@@ -64,6 +72,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover" // or 'stretch'
   }
 });
 

@@ -46,16 +46,6 @@ class FavoritesList extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   this.fetchData();
-  // }
-
-  _keyExtractor = (item, index) => {
-    console.log(item.shop_id);
-    // console.log(index);
-    toString(item.shop_id);
-  };
-
   render() {
     return (
       <View style={{ flex: 1, marginTop: 34 }}>
@@ -68,7 +58,9 @@ class FavoritesList extends Component {
           }
           data={this.state.favorites}
           keyExtractor={(item, index) => item.shop_id.toString()}
-          renderItem={({ item, index }) => <Favorite favorite={item} />}
+          renderItem={({ item, index }) => (
+            <Favorite favorite={item} id={item.id.toString()} />
+          )}
         />
       </View>
     );
