@@ -50,19 +50,27 @@ class FavoritesList extends Component {
   //   this.fetchData();
   // }
 
+  _keyExtractor = (item, index) => {
+    console.log(item.shop_id);
+    // console.log(index);
+    toString(item.shop_id);
+  };
+
   render() {
     return (
-      <FlatList
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh}
-          />
-        }
-        data={this.state.favorites}
-        renderItem={({ item }) => <Favorite favorite={item} />}
-        keyExtractor={item => toString(item.id)}
-      />
+      <View style={{ flex: 1, marginTop: 34 }}>
+        <FlatList
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+          data={this.state.favorites}
+          keyExtractor={(item, index) => item.shop_id.toString()}
+          renderItem={({ item, index }) => <Favorite favorite={item} />}
+        />
+      </View>
     );
   }
 }
