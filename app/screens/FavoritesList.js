@@ -47,29 +47,49 @@ class FavoritesList extends Component {
   };
 
   render() {
-    return (
-      <View style={{ flex: 1, marginTop: 34 }}>
-        <FlatList
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
-            />
-          }
-          data={this.state.favorites}
-          keyExtractor={(item, index) => item.shop_id.toString()}
-          renderItem={({ item, index }) => (
-            <Favorite favorite={item} id={item.id.toString()} />
-          )}
-        />
-      </View>
-    );
+    if (this.state.favorites.length > 0) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgb(237, 255, 217)"
+          }}
+        >
+          <FlatList
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh}
+              />
+            }
+            data={this.state.favorites}
+            keyExtractor={(item, index) => item.shop_id.toString()}
+            renderItem={({ item, index }) => (
+              <Favorite favorite={item} id={item.id.toString()} />
+            )}
+          />
+        </View>
+      );
+    } else if (this.state.favorites.length === 0) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgb(237, 255, 217)",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <Text>You dont have any favorites.</Text>
+        </View>
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
   list: {
-    backgroundColor: "#eee",
+    backgroundColor: "rgb(237, 255, 217)",
     width: "100%"
   }
 });

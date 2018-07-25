@@ -12,22 +12,23 @@ import { Card, Button } from "react-native-elements";
 import { WebBrowser, MapView, Constants, Location, Permissions } from "expo";
 import ajax from "../ajax";
 import ShopsList from "./ShopsList";
+import Loader from "./Loader";
 
 class Home extends Component {
   async componentDidMount() {
     this._getLocationAsync();
     console.log(this.state.location);
-    // const shops = await ajax.fetchCoffeeShops(
-    //   this.state.location.coords.latitude,
-    //   this.state.location.coords.longitude
-    // );
-    // console.log(shops);
-    // this.setState({ shops });
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      });
+    }, 4500);
   }
 
   state = {
     location: null,
-    errorMessage: null
+    errorMessage: null,
+    loading: true
   };
 
   _getLocationAsync = async () => {
@@ -49,6 +50,7 @@ class Home extends Component {
         source={require("../images/coffeebeans.jpg")}
         style={{ width: "100%", height: "100%" }}
       >
+        <Loader loading={this.state.loading} />
         <View style={styles.container}>
           <Button
             backgroundColor="rgb(219 ,157 ,71)"
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: "cover" // or 'stretch'
+    resizeMode: "cover"
   }
 });
 

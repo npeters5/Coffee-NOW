@@ -24,16 +24,13 @@ class CoffeeMap extends Component {
         }}
       >
         <Marker
+          pinColor={"blue"}
           coordinate={latlong}
           title={"You are here"}
           description={"Here is where you are"}
         />
         {shops.map(shop => (
-          <Marker
-            coordinate={shop.coords}
-            title={shop.name}
-            description={shop.url}
-          />
+          <Marker key={shop.id} coordinate={shop.coords} title={shop.name} />
         ))}
       </MapView>
     );

@@ -4,8 +4,17 @@ import { Card, Button, Text } from "react-native-elements";
 import { onSignOut } from "../auth";
 
 export default ({ navigation }) => (
-  <View style={{ paddingVertical: 20 }}>
-    <Card title="John Doe">
+  <View
+    style={{
+      paddingVertical: 20,
+      backgroundColor: "rgb(58, 48, 66)",
+      height: "100%"
+    }}
+  >
+    <Card
+      title="Bob Loblaw"
+      containerStyle={{ backgroundColor: "rgb(237, 255, 217)" }}
+    >
       <View
         style={{
           backgroundColor: "#bcbec1",
@@ -18,10 +27,10 @@ export default ({ navigation }) => (
           marginBottom: 20
         }}
       >
-        <Text style={{ color: "white", fontSize: 28 }}>JD</Text>
+        <Text style={{ color: "white", fontSize: 28 }}>BL</Text>
       </View>
       <Button
-        backgroundColor="#03A9F4"
+        backgroundColor="rgb(219, 157, 71)"
         title="SIGN OUT"
         onPress={() => onSignOut().then(() => navigation.navigate("SignedOut"))}
       />

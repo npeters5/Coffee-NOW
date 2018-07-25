@@ -64,7 +64,8 @@ class Favorite extends Component {
             );
           },
           text: "Remove",
-          type: "delete"
+          type: "delete",
+          backgroundColor: "rgb(219, 157, 71)"
         }
       ],
       rowId: this.props.id,

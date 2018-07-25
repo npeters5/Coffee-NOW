@@ -12,7 +12,7 @@ import {
   StyleSheet,
   AsyncStorage
 } from "react-native";
-import { Button } from "react-native-elements";
+import { Button, Card } from "react-native-elements";
 import ajax from "../ajax";
 import auth from "../auth";
 import { USER_API_TOKEN } from "../auth";
@@ -100,36 +100,41 @@ class ShopDetail extends Component {
 
   render() {
     const shop = this.state.shop;
-    console.log(shop);
-    console.log(this.state.favorited);
+    console.log(shop.hours);
     if (shop.photos) {
       return (
-        <View>
+        <View style={{ backgroundColor: "rgb(58, 48, 66)", height: "100%" }}>
           <Animated.Image
             {...this.imagePanResponder.panHandlers}
             source={{ uri: shop.photos[this.state.imageIndex] }}
             style={[{ left: this.imageXPos }, styles.image]}
           />
           <View>
-            <View>
-              <Text style={styles.title}>{shop.name}</Text>
-            </View>
+            <Text style={styles.title}>{shop.name}</Text>
+          </View>
+          <Card containerStyle={{ backgroundColor: "rgb(237, 255, 217)" }}>
             <View style={styles.footer}>
-              <View style={styles.info}>
-                <Text style={styles.price}>Average Rating: {shop.rating}</Text>
-                <Text style={styles.cause}>
-                  # of Reviews: {shop.review_count}
+              <View style={{ flexDirection: "row" }}>
+                <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                  Average Rating:{" "}
                 </Text>
+                <Text style={{ fontSize: 16 }}>{shop.rating}</Text>
               </View>
-              <View style={styles.user}>
-                <Text>{shop.address}</Text>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                  # of Reviews:{" "}
+                </Text>
+                <Text style={{ fontSize: 16 }}>{shop.review_count}</Text>
               </View>
-            </View>
-            <View style={styles.description}>
+              <View style={{ paddingTop: 10 }} />
+              <Text>{shop.address[0]}</Text>
+              <Text>{shop.address[1]}</Text>
+              <Text>{shop.address[2]}</Text>
               <Text>Phone: {shop.display_phone}</Text>
             </View>
             <View>
               <Button
+                backgroundColor="rgb(219 ,157 ,71)"
                 title={
                   this.state.favorited
                     ? "Remove from Favorites"
@@ -142,10 +147,15 @@ class ShopDetail extends Component {
                 }
               />
             </View>
+            <View style={{ paddingTop: 10 }} />
             <View>
-              <Button title="Go to Yelp page" onPress={this.openShopUrl} />
+              <Button
+                backgroundColor="rgb(255, 120, 79)"
+                title="Go to Yelp page"
+                onPress={this.openShopUrl}
+              />
             </View>
-          </View>
+          </Card>
         </View>
       );
     } else {
@@ -161,18 +171,16 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: "#ccc"
   },
-
   title: {
-    fontSize: 16,
     padding: 10,
     fontWeight: "bold",
-    backgroundColor: "rgba(237, 149, 45, 0.4)"
+    backgroundColor: "rgb(255, 225, 156)"
   },
   footer: {
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-around",
-    alignItems: "center",
-    marginTop: 15
+    marginTop: 15,
+    paddingBottom: 15
   },
   info: {
     alignItems: "center"

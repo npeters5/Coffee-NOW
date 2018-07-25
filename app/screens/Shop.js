@@ -7,13 +7,13 @@ class Shop extends Component {
     const { shop } = this.props;
 
     return (
-      <TouchableOpacity style={styles.shop}>
+      <View style={styles.shop}>
         <Image source={{ uri: shop.image_url }} style={styles.image} />
         <View style={styles.info}>
           <Text style={styles.title}>{shop.name}</Text>
         </View>
         <Text />
-      </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -21,7 +21,7 @@ class Shop extends Component {
 const styles = StyleSheet.create({
   shop: {
     marginHorizontal: 12,
-    marginTop: 12
+    marginTop: 17
   },
   image: {
     width: "100%",

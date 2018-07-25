@@ -21,8 +21,14 @@ class SignIn extends Component {
     console.log(this.state);
 
     return (
-      <View style={{ paddingVertical: 20 }}>
-        <Card>
+      <View
+        style={{
+          backgroundColor: "rgb(58, 48, 66)",
+          paddingVertical: 20,
+          height: "100%"
+        }}
+      >
+        <Card containerStyle={{ backgroundColor: "rgb(237, 255, 217)" }}>
           <FormLabel>Email</FormLabel>
           <FormInput
             placeholder="Email address..."
@@ -40,7 +46,7 @@ class SignIn extends Component {
 
           <Button
             buttonStyle={{ marginTop: 20 }}
-            backgroundColor="#03A9F4"
+            backgroundColor="rgb(219, 157, 71)"
             title="SIGN IN"
             onPress={() => {
               ajax

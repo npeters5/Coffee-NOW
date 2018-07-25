@@ -75,26 +75,6 @@ export const SignedIn = createBottomTabNavigator(
         tabBarOnPress: () =>
           navigation.navigate("FavoritesList", { refreshData: true })
       })
-
-      // navigationOptions: ({ navigation }) => ({
-      //   tabBarLabel: ({ tintColor }) => (
-      //     <TouchableOpacity
-      //       // Pass a random number or a new Date() as a param when navigate to the screen
-      //       onPress={() =>
-      //         navigation.navigate("FavoritesList", { date: new Date() })
-      //       }
-      //       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      //     >
-      //       <Text>Favorites</Text>
-      //     </TouchableOpacity>
-      //   )
-      // })
-      // navigationOptions: {
-      //   tabBarLabel: "Favorites",
-      //   tabBarIcon: ({ tintColor }) => (
-      //     <FontAwesome name="heart" size={30} color={tintColor} />
-      //   )
-      // }
     },
     Profile: {
       screen: Prof,
