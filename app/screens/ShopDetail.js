@@ -98,6 +98,25 @@ class ShopDetail extends Component {
     });
   };
 
+  openNow = () => {
+    console.log(this.state.shop.hours[0].is_open_now);
+    if (this.state.shop.hours[0].is_open_now) {
+      return (
+        <View style={{ flexDirection: "row" }}>
+          <Text style={{ fontWeight: "bold", fontSize: 16 }}>Open now? </Text>
+          <Text style={{ fontSize: 16 }}>Yes</Text>
+        </View>
+      );
+    } else {
+      return (
+        <View style={{ flexDirection: "row" }}>
+          <Text style={{ fontWeight: "bold", fontSize: 16 }}>Open now? </Text>
+          <Text style={{ fontSize: 16 }}>No</Text>
+        </View>
+      );
+    }
+  };
+
   render() {
     const shop = this.state.shop;
     console.log(shop.hours);
@@ -114,11 +133,12 @@ class ShopDetail extends Component {
           </View>
           <Card containerStyle={{ backgroundColor: "rgb(237, 255, 217)" }}>
             <View style={styles.footer}>
+              <View>{this.openNow()}</View>
               <View style={{ flexDirection: "row" }}>
                 <Text style={{ fontWeight: "bold", fontSize: 16 }}>
                   Average Rating:{" "}
                 </Text>
-                <Text style={{ fontSize: 16 }}>{shop.rating}</Text>
+                <Text style={{ fontSize: 16 }}>{shop.rating} / 5</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Text style={{ fontWeight: "bold", fontSize: 16 }}>
@@ -179,7 +199,7 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: "column",
     justifyContent: "space-around",
-    marginTop: 15,
+    marginTop: 5,
     paddingBottom: 15
   },
   info: {
