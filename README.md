@@ -16,7 +16,7 @@ Coffee NOW! is a react native app designed for iPhone for the coffee snob who wa
 
 ### Shop Detail page & Yelp redirect
 
-![gif of shop detail view](https://media.giphy.com/media/1qcQStFHWpgmGVwZ2q/giphy.gif)
+![gif of shop detail view](https://media.giphy.com/media/1qYJNELQlvuHYV7tLT/giphy.gif)
 
 ### Add a Coffee Shop to your Favorites
 
