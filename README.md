@@ -4,7 +4,7 @@
 
 Coffee NOW! is a react native app designed for iPhone for the coffee snob who wants a high quality cup of bean juice yesterday, without the hassle of sifting through unrelated search results on Yelp or Google. Search for only the best coffee shops near you, and save them to your Favorites!
 
-## Chow Functionality
+## Coffee NOW! Functionality
 
 ### Create an account or sign in to existing account
 
@@ -12,7 +12,7 @@ Coffee NOW! is a react native app designed for iPhone for the coffee snob who wa
 
 ### Initial Coffee Search & Map View
 
-![gif of map view](https://media.giphy.com/media/Y4sMxolJ8AKNfEDnmT/giphy.gif)
+![gif of map view](https://media.giphy.com/media/555G4TIaksPkGUESFR/giphy.gif)
 
 ### Shop Detail page & Yelp redirect
 
@@ -21,15 +21,15 @@ Coffee NOW! is a react native app designed for iPhone for the coffee snob who wa
 
 ### Add a Coffee Shop to your Favorites
 
-![gif of adding shop to Favorites](https://media.giphy.com/media/55d5boYaCj4WBbxwod/giphy.gif)
+![gif of adding shop to Favorites](https://media.giphy.com/media/5bgPVS9PO9ZOtpuNoI/giphy.gif)
 
 ### Remove Favorite from Favorites Screen
 
-![gif of deleting a favorite](https://media.giphy.com/media/3oa91YOYI7vsR8KJfC/giphy.gif)
+![gif of deleting a favorite](https://media.giphy.com/media/2t9vwdVU2nVgQiUXqg/giphy.gif)
 
 ### Remove Favorite from Shop Detail Screen
 
-![gif of deleting a favorite](https://media.giphy.com/media/2wXtk30mzW3HelgE4N/giphy.gif)
+![gif of deleting a favorite](https://media.giphy.com/media/2442e4VkUPUPkSu7Xr/giphy.gif)
 
 ## Get Coffee NOW! up and running on your local environment
 
