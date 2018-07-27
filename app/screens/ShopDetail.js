@@ -138,6 +138,7 @@ class ShopDetail extends Component {
                 <Text style={{ fontWeight: "bold", fontSize: 16 }}>
                   Average Rating:{" "}
                 </Text>
+
                 <Text style={{ fontSize: 16 }}>{shop.rating} / 5</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
@@ -176,6 +177,17 @@ class ShopDetail extends Component {
               />
             </View>
           </Card>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: 5
+            }}
+          >
+            <Text style={{ fontSize: 10, color: "white" }}>Powered by </Text>
+            <Image source={require("../images/Yelp_trademark_RGB.png")} />
+          </View>
         </View>
       );
     } else {
@@ -199,7 +211,6 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: "column",
     justifyContent: "space-around",
-    marginTop: 5,
     paddingBottom: 15
   },
   info: {
