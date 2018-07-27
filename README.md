@@ -12,7 +12,7 @@ Coffee NOW! is a react native app designed for iPhone for the coffee snob who wa
 
 ### Initial Coffee Search & Map View
 
-![gif of map view](https://media.giphy.com/media/3tLwtukZ69RLyR5chv/giphy.gif)
+![gif of map view](https://media.giphy.com/media/Y4sMxolJ8AKNfEDnmT/giphy.gif)
 
 ### Shop Detail page & Yelp redirect
 
