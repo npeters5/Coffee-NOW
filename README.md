@@ -2,7 +2,7 @@
 
 ## What is Coffee NOW!?
 
-Coffee NOW! is a react native app designed for iPhone for the coffee snob who wants a high quality cup of bean juice yesterday, without the hassle of sifting through unrelated search results on Yelp or Google. Search for only the best coffee shops near you, and save them to your Favorites!
+Coffee NOW! is a React Native app designed for iPhone for the coffee snob who wants a high quality cup of bean juice yesterday, without the hassle of sifting through unrelated search results on Yelp or Google. Search for only the best coffee shops near you, and save them to your Favorites!
 
 ## Coffee NOW! Functionality
 
@@ -38,7 +38,7 @@ Coffee NOW! is a react native app designed for iPhone for the coffee snob who wa
 3.  Run `npm install` to install dependencies
 4.  Get a Yelp API Key [here](https://www.yelp.com/developers/v3/manage_app)
 5.  Set up the [Coffee Now API](https://github.com/npeters5/coffeenow-api)
-6.  Add a .env file to the root directory. The .env file should look like the following:
+6.  Add a .env file to the root directory of the Coffee NOW API. The .env file should look like the following:
 
 ```
 YELP_API_KEY=yourYelpAPIKey
